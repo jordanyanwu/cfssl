@@ -421,7 +421,13 @@ mv cfssl_1.6.0_linux_amd64 /usr/bin/cfssl;
 mv cfssl-certinfo_1.6.0_linux_amd64 /usr/bin/cfssl-certinfo;
 mv cfssljson_1.6.0_linux_amd64 /usr/bin/cfssljson;
 
+生成CA公钥和私钥
 cd /opt/ssl/k8sca/;
 cfssl gencert -initca ca-csr.json | cfssljson -bare ca;
 ls;
 ca-config.json  ca.csr  ca-csr.json  ca-key.pem  ca.pem
+
+生成etcd钥和私钥
+下载etcd-csr.json，ca-config.json，和CA公钥私钥
+注意：ca-csr.json,etc-csr.json中CN字段和ca-config.json中profile，以下命令中profile=字段名字必需要一致
+cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=etcd-server etcd-csr.json | cfssljson -bare etcd
