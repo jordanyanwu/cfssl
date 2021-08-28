@@ -417,6 +417,10 @@ Additional documentation can be found in the "doc" directory:
 
 
 K8S etcd:
+mv cfssl_1.6.0_linux_amd64 /usr/bin/cfssl;
+mv cfssl-certinfo_1.6.0_linux_amd64 /usr/bin/cfssl-certinfo;
+mv cfssljson_1.6.0_linux_amd64 /usr/bin/cfssljson;
+
 cd /opt/ssl/k8sca/;
 cfssl gencert -initca ca-csr.json | cfssljson -bare ca;
 ls;
