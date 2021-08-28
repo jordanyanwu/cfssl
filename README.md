@@ -412,3 +412,12 @@ Then building with `go build` will use the embedded resources.
 Additional documentation can be found in the "doc" directory:
 
 * `api/intro.txt`: documents the API endpoints
+
+
+
+
+K8S etcd
+cd /opt/ssl/k8sca/
+cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+ls
+ca-config.json  ca.csr  ca-csr.json  ca-key.pem  ca.pem
